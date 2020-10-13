@@ -1395,11 +1395,62 @@ namespace Nop.Services.Catalog
                 var combination = _productAttributeParser.FindProductAttributeCombination(product, attributesXml);
                 if (combination != null)
                 {
+                    var prevTotalStockByAllCombinations = _productAttributeService
+                        .GetAllProductAttributeCombinations(product.Id).Sum(c => c.StockQuantity);
+
                     combination.StockQuantity += quantityToChange;
                     _productAttributeService.UpdateProductAttributeCombination(combination);
 
                     //quantity change history
                     AddStockQuantityHistoryEntry(product, quantityToChange, combination.StockQuantity, message: message, combinationId: combination.Id);
+
+                    if (product.AllowAddingOnlyExistingAttributeCombinations)
+                    {
+                        var totalStockByAllCombinations = _productAttributeService
+                            .GetAllProductAttributeCombinations(product.Id).Sum(c => c.StockQuantity);
+
+                        //qty is reduced. check if minimum stock quantity is reached
+                        if (quantityToChange < 0 && product.MinStockQuantity >= totalStockByAllCombinations)
+                        {
+                            switch (product.LowStockActivity)
+                            {
+                                case LowStockActivity.DisableBuyButton:
+                                    product.DisableBuyButton = true;
+                                    product.DisableWishlistButton = true;
+                                    UpdateProduct(product);
+                                    break;
+                                case LowStockActivity.Unpublish:
+                                    product.Published = false;
+                                    UpdateProduct(product);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                        //qty is increased. product is back in stock (minimum stock quantity is reached again)?
+                        if (_catalogSettings.PublishBackProductWhenCancellingOrders)
+                        {
+                            if (quantityToChange > 0 && prevTotalStockByAllCombinations <= product.MinStockQuantity && product.MinStockQuantity < totalStockByAllCombinations)
+                            {
+
+                                switch (product.LowStockActivity)
+                                {
+                                    case LowStockActivity.DisableBuyButton:
+                                        product.DisableBuyButton = false;
+                                        product.DisableWishlistButton = false;
+                                        UpdateProduct(product);
+                                        break;
+                                    case LowStockActivity.Unpublish:
+                                        product.Published = true;
+                                        UpdateProduct(product);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    }
 
                     //send email notification
                     if (quantityToChange < 0 && combination.StockQuantity < combination.NotifyAdminForQuantityBelow)
