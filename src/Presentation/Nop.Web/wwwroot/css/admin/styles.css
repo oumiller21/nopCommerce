@@ -727,17 +727,6 @@ input[type="text"].k-input {
 .main-header {
     max-height: 150px;
 }
-.main-header .logo {
-    padding: 0;
-}
-.main-header .logo-lg {
-    background: url(images/logo.png) no-repeat 50% 50%;
-    height: 50px;
-}
-.main-header .logo-mini {
-    background: url(images/logo-mini.png) no-repeat 50% 50%;
-    height: 50px;
-}
 
 /* SIDE BAR */
 .sidebar-menu, .main-sidebar .user-panel, .sidebar-menu > li.header {
