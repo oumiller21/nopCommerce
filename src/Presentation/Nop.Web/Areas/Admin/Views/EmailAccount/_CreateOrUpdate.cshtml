@@ -62,7 +62,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                     <nop-editor asp-for="Password"/>
-                                    <div class="input-group-btn">
+                                    <div class="input-group-append">
                                         @if (Model.Id > 0)
                                         {
                                             <button type="submit" name="changepassword" class="btn btn-info">
@@ -108,7 +108,7 @@
                                 <div class="col-md-9">
                                     <div class="input-group">
                                         <nop-editor asp-for="SendTestEmailTo"/>
-                                        <div class="input-group-btn">
+                                        <div class="input-group-append">
                                             <button type="submit" name="sendtestemail" class="btn btn-info">
                                                 @T("Admin.Configuration.EmailAccounts.SendTestEmail.Button")
                                             </button>

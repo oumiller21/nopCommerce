@@ -60,7 +60,7 @@
             <div class="input-group">
                 <nop-editor asp-for="GiftCardCouponCode"/>
                 <span asp-validation-for="GiftCardCouponCode"></span>
-                <div class="input-group-btn">
+                <div class="input-group-append">
                     <button type="button" id="generateCouponCode" class="btn btn-info">@T("Admin.GiftCards.Fields.GiftCardCouponCode.Generate")</button>
                     <script>
                         $(document).ready(function() {
@@ -145,7 +145,7 @@
                     <div class="input-group-text">
                         <div class="form-text-row">@Model.IsRecipientNotified.ToString()</div>
                     </div>
-                    <div class="input-group-btn">
+                    <div class="input-group-append">
                         <button type="submit" name="notifyRecipient" class="btn btn-info">
                             @T("Admin.GiftCards.Fields.IsRecipientNotified.Notify")
                         </button>
