@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 
     //we must intercept all events of pressing the Enter button in the search bar to be sure that the input focus remains in the context of the search
-    $("div.panel-search").keypress(function (event) {
+    $("div.card-search").keypress(function (event) {
         if (event.which == 13 || event.keyCode == 13) {
             $("button.btn-search").click();
             return false;
@@ -240,24 +240,17 @@ $(document).ajaxStart(function () {
 
 //no-tabs solution
 $(document).ready(function () {
-    $(".panel.collapsible-panel >.panel-heading").click(WrapAndSaveBlockData);
+  $(".card.card-secondary >.card-header").click(WrapAndSaveBlockData);
 });
 
 function WrapAndSaveBlockData() {
-    $(this).parents(".panel").find(">.panel-container").slideToggle(null, null, function () { $(this).trigger("panel:toggle"); });
-    $("#ajaxBusy span").addClass("no-ajax-loader");
-    var icon = $(this).find("i.toggle-icon");
-    if ($(this).hasClass("opened")) {
-        icon.removeClass("fa-minus");
-        icon.addClass("fa-plus");
-        saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', $(this).attr("data-hideAttribute"), true);
-    } else {
-        icon.addClass("fa-minus");
-        icon.removeClass("fa-plus");
-        saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', $(this).attr("data-hideAttribute"), false);
-    }
-
-    $(this).toggleClass("opened");
+  $(this).find('[data-card-widget="collapse"]')[0].click();
+  if ($(this).parent(".card.card-secondary").hasClass("collapsed-card")) {
+    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', $(this).parent(".card.card-secondary").attr("data-hideAttribute"), false);
+  }
+  else {
+    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', $(this).parent(".card.card-secondary").attr("data-hideAttribute"), true);
+  }
 }
 
 //collapse search block
@@ -266,7 +259,7 @@ $(document).ready(function () {
 });
 
 function ToggleSearchBlockAndSavePreferences() {
-    $(this).parents(".panel-search").find(".search-body").slideToggle(null, null, function () { $(this).trigger("panel:toggle"); });
+    $(this).parents(".card-search").find(".search-body").slideToggle(null, null, function () { $(this).trigger("card:toggle"); });
     var icon = $(this).find(".icon-collapse i");
     if ($(this).hasClass("opened")) {
       icon.removeClass("fa-angle-up");
@@ -311,7 +304,7 @@ $(document).ready(function () {
   $('ul li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     ensureDataTablesRendered();
   });
-  $(".panel.collapsible-panel >.panel-heading").click(function () {
+  $(".card.card-secondary >.card-header").click(function () {
     ensureDataTablesRendered();
   });
   $('#advanced-settings-mode').on('click', function (e) {
