@@ -245,11 +245,12 @@ $(document).ready(function () {
 
 function WrapAndSaveBlockData() {
   $(this).find('[data-card-widget="collapse"]')[0].click();
+  var hideAttribute = $(this).parent(".card.card-secondary").attr("data-hideAttribute");
   if ($(this).parent(".card.card-secondary").hasClass("collapsed-card")) {
-    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', $(this).parent(".card.card-secondary").attr("data-hideAttribute"), false);
+    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, false);
   }
   else {
-    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', $(this).parent(".card.card-secondary").attr("data-hideAttribute"), true);
+    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, true);
   }
 }
 
@@ -259,7 +260,7 @@ $(document).ready(function () {
 });
 
 function ToggleSearchBlockAndSavePreferences() {
-    $(this).parents(".card-search").find(".search-body").slideToggle(null, null, function () { $(this).trigger("card:toggle"); });
+    $(this).parents(".card-search").find(".search-body").slideToggle();
     var icon = $(this).find(".icon-collapse i");
     if ($(this).hasClass("opened")) {
       icon.removeClass("fa-angle-up");
@@ -305,7 +306,7 @@ $(document).ready(function () {
     ensureDataTablesRendered();
   });
   $(".card.card-secondary >.card-header").click(function () {
-    ensureDataTablesRendered();
+    reloadAllDataTables();
   });
   $('#advanced-settings-mode').on('click', function (e) {
     ensureDataTablesRendered();
