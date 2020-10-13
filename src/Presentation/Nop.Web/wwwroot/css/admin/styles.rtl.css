@@ -876,11 +876,6 @@ div.dataTables_wrapper {
     color: #777;
     white-space: nowrap;
 }
-.content-header .pull-right {
-    left: 0;
-    right: auto;
-    box-shadow: -3px 3px 5px rgba(0,0,0,0.1);
-}
 
 /* FORM ELEMENTS */
 .form-horizontal .label-wrapper {
@@ -1549,8 +1544,8 @@ span.grid-report-item {
     }
 /*fix for inline-block buttons*/
 .content-header .pull-right > .btn, .content-header .pull-right > .btn-group {
-    float: right;
-    margin-right: 3px;
+  float: right;
+  margin-right: 3px;
 }
 
 
