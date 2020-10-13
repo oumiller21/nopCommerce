@@ -889,7 +889,7 @@ div.dataTables_wrapper div.dataTables_processing .fa {
     color: #777;
     white-space: nowrap;
 }
-.content-header .pull-right .dropdown-menu {
+.content-header .pull-right {
     right: 0;
     left: auto;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
