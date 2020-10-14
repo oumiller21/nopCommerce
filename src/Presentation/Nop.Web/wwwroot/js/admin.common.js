@@ -245,6 +245,9 @@ $(document).ready(function () {
 
 function WrapAndSaveBlockData() {
   $(this).find('[data-card-widget="collapse"]')[0].click();
+  setTimeout(function () {
+        ensureDataTablesRendered();
+      }, 400);
   var hideAttribute = $(this).parent(".card.card-secondary").attr("data-hideAttribute");
   if ($(this).parent(".card.card-secondary").hasClass("collapsed-card")) {
     saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, false);
@@ -295,7 +298,7 @@ function reloadAllDataTables(itemCount) {
 //scrolling and hidden DataTables issue workaround
 //More info - https://datatables.net/examples/api/tabs_and_scrolling.html
 $(document).ready(function () {
-  $('button[data-widget="collapse"]').on('click', function (e) {
+  $('button[data-card-widget="collapse"]').on('click', function (e) {
     //hack with waiting animation. 
     //when page is loaded, a box that should be collapsed have style 'display: none;'.that's why a table is not updated
     setTimeout(function () {
@@ -304,9 +307,6 @@ $(document).ready(function () {
   });
   $('ul li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     ensureDataTablesRendered();
-  });
-  $(".card.card-secondary >.card-header").click(function () {
-    reloadAllDataTables();
   });
   $('#advanced-settings-mode').on('click', function (e) {
     ensureDataTablesRendered();
