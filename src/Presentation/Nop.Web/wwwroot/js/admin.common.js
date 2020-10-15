@@ -241,15 +241,19 @@ $(document).ajaxStart(function () {
 //no-tabs solution
 $(document).ready(function () {
   $(".card.card-secondary >.card-header").click(WrapAndSaveBlockData);
+
+  $('.card.card-secondary').on('expanded.lte.cardwidget', function (e) {
+    setTimeout(function () {
+      ensureDataTablesRendered();
+    }, 400);
+  });
 });
 
 function WrapAndSaveBlockData() {
-  $(this).find('[data-card-widget="collapse"]')[0].click();
-  setTimeout(function () {
-        ensureDataTablesRendered();
-      }, 400);
-  var hideAttribute = $(this).parent(".card.card-secondary").attr("data-hideAttribute");
-  if ($(this).parent(".card.card-secondary").hasClass("collapsed-card")) {
+  var card = $(this).parent(".card.card-secondary")
+  card.CardWidget('toggle');
+  var hideAttribute = card.attr("data-hideAttribute");
+  if (card.hasClass("collapsed-card")) {
     saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, false);
   }
   else {
