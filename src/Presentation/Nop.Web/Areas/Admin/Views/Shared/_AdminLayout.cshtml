@@ -202,9 +202,15 @@
                     <li class="nav-item">
                         @await Component.InvokeAsync("AdminLanguageSelector")
                     </li>
-                    <li class="nav-item">
-                        <a asp-controller="Customer" asp-action="Logout" asp-area="" class="nav-link">@T("Admin.Header.Logout")</a>
-                    </li>
+                    @if (customerService.IsRegistered(currentCustomer))
+                    {
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled">@customerService.GetCustomerFullName(currentCustomer)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Customer" asp-action="Logout" asp-area="" class="nav-link">@T("Admin.Header.Logout")</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.HeaderMiddle })
                     </li>
@@ -265,15 +271,6 @@
                     <img src="~/css/admin/images/logo.png" alt="logo.png" class="brand-image-xs logo-xl">
                 </a>
                 <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                                <img src="~/lib_npm/admin-lte/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
-                            </div>
-                        <div class="info">
-                            <a href="#" class="d-block"> @customerService.GetCustomerFullName(currentCustomer)</a>
-                        </div>
-                    </div>
                     <div class="sidebar-form">
                         <div id="search-box">
                             <input type="text" class="form-control admin-search-box typeahead" placeholder="@T("Admin.Menu.Search")">
