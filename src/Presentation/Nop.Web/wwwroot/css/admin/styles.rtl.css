@@ -167,10 +167,6 @@ ul.common-list {
     overflow-x: scroll;
 }
 
-.brand-link .brand-image-xl {
-  max-height: 45px;
-}
-
 /*COLLAPSIBLE BLOCKS*/
 #ajaxBusy span.no-ajax-loader {
     background: none;
@@ -764,12 +760,22 @@ input[type="text"].k-input {
 }
 
 /* SIDE BAR */
-.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu > li.header {
-    white-space: normal;
+.brand-link .brand-image-xl {
+  max-height: 45px;
 }
-    .sidebar-menu .treeview-menu > li > a {
-        padding: 5px 15px;
-    }
+
+.nav-sidebar .nav-link p {
+  white-space: normal;
+  display: inline;
+}
+
+.nav-sidebar, .main-sidebar {
+  white-space: normal;
+}
+
+  .nav-sidebar .nav-treeview > li > a {
+    padding: 5px 15px;
+  }
 .sidebar-form {
     border: none !important;
     overflow: visible;
