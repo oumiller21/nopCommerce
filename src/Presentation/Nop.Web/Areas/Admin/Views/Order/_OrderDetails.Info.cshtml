@@ -494,7 +494,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9 col-md-offset-3">
+                <div class="col-md-9 offset-md-3">
                     <button type="submit" name="btnEditOrderTotals" onclick="toggleOrderTotals(true);return false;" id="btnEditOrderTotals" class="btn btn-primary">
                         @T("Admin.Orders.Fields.EditOrderTotals")
                     </button>
@@ -596,7 +596,7 @@
             @if (Model.AllowStoringCreditCardNumber)
             {
                 <div class="form-group row">
-                    <div class="col-md-9 col-md-offset-3">
+                    <div class="col-md-9 offset-md-3">
                         <button type="submit" name="btnEditCC" onclick="toggleCC(true);return false;" id="btnEditCC" class="btn btn-primary">
                             @T("Admin.Orders.Fields.EditCC")
                         </button>
@@ -666,7 +666,7 @@
               Model.CanPartiallyRefund || Model.CanPartiallyRefundOffline || Model.CanVoid || Model.CanVoidOffline)
             {
                 <div class="form-group row">
-                    <div class="col-md-9 col-md-offset-3">
+                    <div class="col-md-9 offset-md-3">
                         @if (!Model.IsLoggedInAsVendor)
                         {
                             if (Model.CanCapture)
