@@ -264,11 +264,11 @@
         }
         else
         {
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <aside class="main-sidebar sidebar-light-primary elevation-4">
                 <!-- Brand Logo -->
-                <a href="@Url.Content("~/Admin")" class="brand-link logo-switch">
+                <a href="@Url.Content("~/Admin")" class="brand-link navbar-dark logo-switch">
                     <img src="~/css/admin/images/logo-mini.png" alt="logo.png" class="brand-image-xl logo-xs">
-                    <img src="~/css/admin/images/logo.png" alt="logo.png" class="brand-image-xs logo-xl">
+                    <img src="~/css/admin/images/logo.png" alt="logo.png" class="brand-image-xl logo-xl">
                 </a>
                 <div class="sidebar">
                     <div class="sidebar-form">
@@ -292,7 +292,7 @@
         }
         <div class="content-wrapper">
             @await Html.PartialAsync("Notifications")
-            <div>
+            <div class="text-sm">
                 <nop-antiforgery-token />
                 @RenderBody()
             </div>

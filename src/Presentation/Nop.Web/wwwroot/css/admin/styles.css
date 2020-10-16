@@ -132,10 +132,29 @@ ul.common-list {
     -o-transition: all 0.2s;
     transition: all 0.2s;
 }
+
+.btn-primary {
+  background-color: #3c8dbc;
+  border-color: #367fa9;
+}
+
+.bg-purple {
+  background-color: #605ca8 !important;
+}
+
+.btn-danger {
+  background-color: #dd4b39 !important;
+}
+
+.btn-info {
+  background-color: #00c0ef;
+  border-color: #00acd6;
+}
+
 .dropdown-menu button {
-    border: none;
-    padding: 3px 20px;
-    text-align: left;
+  border: none;
+  padding: 3px 20px;
+  text-align: left;
 }
 .dropdown-menu li:hover {
     background: rgba(0,0,0,0.1);
@@ -147,9 +166,13 @@ ul.common-list {
     overflow-x: scroll;
 }
 
+.brand-link .brand-image-xl {
+    max-height: 45px;
+}
+
 /*COLLAPSIBLE BLOCKS*/
 #ajaxBusy span.no-ajax-loader {
-    background: none;
+  background: none;
 }
 
 .card.collapsed-card {
@@ -214,15 +237,20 @@ ul.common-list {
   padding-right: 0 !important;
 }
 
+.card-info:not(.card-outline) > .card-header {
+  background-color: #d9edf7;
+}
 
-
-/*Search block collapse*/
-.search-row {
+  .card-info:not(.card-outline) > .card-header > a {
+    color: #3c8dbc;
+  }
+  /*Search block collapse*/
+  .search-row {
     padding-left: 50px;
     padding-right: 30px;
     position: relative;
     cursor: pointer;
-}
+  }
 
 .card-search .search-body.closed {
     display: none;
@@ -582,6 +610,12 @@ td.k-state-focused.k-state-selected {
 .ui-tooltip {
     z-index: 10005;
 }
+
+.tooltip-inner {
+  background-color: #ede5ef !important;
+  color: #0e0e0e;
+}
+
 .k-multiselect {    
     width: 100% !important;
 }

@@ -133,6 +133,25 @@ ul.common-list {
         -o-transition: all 0.2s;
         transition: all 0.2s;
     }
+
+.btn-primary {
+  background-color: #3c8dbc;
+  border-color: #367fa9;
+}
+
+.bg-purple {
+  background-color: #605ca8 !important;
+}
+
+.btn-danger {
+  background-color: #dd4b39 !important;
+}
+
+.btn-info {
+  background-color: #00c0ef;
+  border-color: #00acd6;
+}
+
 .dropdown-menu button {
     border: none;
     padding: 3px 20px;
@@ -146,6 +165,10 @@ ul.common-list {
     }
 .scroll-wrapper {
     overflow-x: scroll;
+}
+
+.brand-link .brand-image-xl {
+  max-height: 45px;
 }
 
 /*COLLAPSIBLE BLOCKS*/
@@ -218,6 +241,14 @@ ul.common-list {
     .card.collapsed-card .card-body.collapsed {
         display: none;
     }
+
+.card-info:not(.card-outline) > .card-header {
+  background-color: #d9edf7;
+}
+
+  .card-info:not(.card-outline) > .card-header > a {
+    color: #3c8dbc;
+  }
 
 /*Search block collapse*/
 .search-row {
@@ -584,6 +615,12 @@ td.k-state-focused.k-state-selected {
 .ui-tooltip {
     z-index: 10005;
 }
+
+.tooltip-inner {
+  background-color: #ede5ef !important;
+  color: #0e0e0e;
+}
+
 .k-multiselect {
     width: 100% !important;
 }
