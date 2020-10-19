@@ -5,6 +5,9 @@
 ul, ol {
     margin-bottom: 0;
 }
+a {
+  color: #3c8dbc;
+}
 .margin-r-10 {
     margin-left: 10px;
 }
