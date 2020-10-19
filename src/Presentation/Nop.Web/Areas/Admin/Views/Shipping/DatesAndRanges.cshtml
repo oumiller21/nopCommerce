@@ -30,7 +30,7 @@
         <div class="form-horizontal">
             <div class="form-horizontal">
                 <div class="panel-group">
-                    <nop-cards id="datesandranges-panels">
+                    <nop-cards id="datesandranges-cards">
                         <nop-card asp-name="datesandranges-dates" asp-icon="fa fa-calendar" asp-title="@T("Admin.Configuration.Shipping.DeliveryDates")" asp-hide-block-attribute-name="@hideDatesBlockAttributeName" asp-hide="@hideDatesBlock" asp-advanced="false">@await Html.PartialAsync("_DatesAndRanges.Dates", Model)</nop-card>
                         <nop-card asp-name="datesandranges-ranges" asp-icon="fa fa-arrows-h" asp-title="@T("Admin.Configuration.Shipping.ProductAvailabilityRanges")" asp-hide-block-attribute-name="@hideRangesBlockAttributeName" asp-hide="@hideRangesBlock" asp-advanced="false">@await Html.PartialAsync("_DatesAndRanges.Ranges", Model)</nop-card>
 

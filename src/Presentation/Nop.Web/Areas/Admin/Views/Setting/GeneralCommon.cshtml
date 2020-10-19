@@ -72,7 +72,7 @@
                 @await Component.InvokeAsync("SettingMode")
                 <div asp-validation-summary="All"></div>
 
-                <nop-cards id="generalcommon-panels">
+                <nop-cards id="generalcommon-cards">
                     <nop-card asp-name="generalcommon-common" asp-icon="fa fa-info" asp-title="@T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.Common")" asp-hide-block-attribute-name="@hideCommonBlockAttributeName" asp-hide="@hideCommonBlock" asp-advanced="false">@await Html.PartialAsync("_GeneralCommon.Common", Model)</nop-card>
                     <nop-card asp-name="generalcommon-top-menu-items" asp-icon="fa fa-level-up" asp-title="@T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.TopMenuItems")" asp-hide-block-attribute-name="@hideTopMenuItemsBlockAttributeName" asp-hide="@hideTopMenuItemsBlock" asp-advanced="true">@await Html.PartialAsync("_GeneralCommon.TopMenuItems", Model)</nop-card>
                     <nop-card asp-name="generalcommon-footeritems" asp-icon="fa fa-level-down" asp-title="@T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.FooterItems")" asp-hide-block-attribute-name="@hideFooterItemsBlockAttributeName" asp-hide="@hideFooterItemsBlock" asp-advanced="true">@await Html.PartialAsync("_GeneralCommon.FooterItems", Model)</nop-card>

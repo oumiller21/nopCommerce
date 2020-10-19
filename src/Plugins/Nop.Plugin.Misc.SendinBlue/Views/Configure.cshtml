@@ -11,7 +11,7 @@
 @await Component.InvokeAsync("StoreScopeConfiguration")
 
 <form asp-controller="SendinBlue" asp-action="Configure" method="post">
-    <nop-cards id="sendinblue-panels">
+    <nop-cards id="sendinblue-cards">
         <nop-card asp-name="sendinblue-general" asp-icon="fa fa-info" asp-title="@T("Plugins.Misc.SendinBlue.General")" asp-hide-block-attribute-name="@SendinBlueDefaults.HideGeneralBlock" asp-hide="@Model.HideGeneralBlock" asp-advanced="false">
             <div class="card-body">
                 <div class="card card-default">

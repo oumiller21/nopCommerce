@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <nop-cards id="category-panels">
+            <nop-cards id="category-cards">
                 <nop-card asp-name="category-info" asp-icon="fa fa-info" asp-title="@T("Admin.Catalog.Categories.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
                 <nop-card asp-name="category-display" asp-icon="fa fa-television" asp-title="@T("Admin.Catalog.Categories.Display")" asp-hide-block-attribute-name="@hideDisplayBlockAttributeName" asp-hide="@hideDisplayBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Display", Model)</nop-card>
                 <nop-card asp-name="category-mappings" asp-icon="fa fa-bookmark" asp-title="@T("Admin.Catalog.Categories.Mappings")" asp-hide-block-attribute-name="@hideMappingsBlockAttributeName" asp-hide="@hideMappingsBlock" asp-advanced="true">@await Html.PartialAsync("_CreateOrUpdate.Mappings", Model)</nop-card>

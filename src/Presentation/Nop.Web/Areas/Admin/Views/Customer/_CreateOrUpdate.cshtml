@@ -32,7 +32,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="form-horizontal">
-            <nop-cards id="customer-panels">
+            <nop-cards id="customer-cards">
                 <nop-card asp-name="customer-info" asp-icon="fa fa-info" asp-title="@T("Admin.Customers.Customers.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
                 @if (Model.Id > 0)
                 {                    

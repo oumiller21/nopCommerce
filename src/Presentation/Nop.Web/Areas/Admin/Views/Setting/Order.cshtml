@@ -48,7 +48,7 @@
                 @await Component.InvokeAsync("SettingMode")
                 <div asp-validation-summary="All"></div>
 
-                <nop-cards id="ordersettings-panels">
+                <nop-cards id="ordersettings-cards">
                     <nop-card asp-name="ordersettings-checkout" asp-icon="fa fa-credit-card" asp-title="@T("Admin.Configuration.Settings.Order.BlockTitle.Checkout")" asp-hide-block-attribute-name="@hideCheckoutBlockAttributeName" asp-hide="@hideCheckoutBlock" asp-advanced="false">@await Html.PartialAsync("_Order.Checkout", Model)</nop-card>
                     <nop-card asp-name="ordersettings-order-totals" asp-icon="fa fa-money" asp-title="@T("Admin.Configuration.Settings.Order.BlockTitle.OrderTotals")" asp-hide-block-attribute-name="@hideOrderTotalsBlockAttributeName" asp-hide="@hideOrderTotalsBlock" asp-advanced="true">@await Html.PartialAsync("_Order.OrderTotals", Model)</nop-card>
                     <nop-card asp-name="ordersettings-common" asp-icon="fa fa-info" asp-title="@T("Admin.Configuration.Settings.Order.BlockTitle.Common")" asp-hide-block-attribute-name="@hideCommonBlockAttributeName" asp-hide="@hideCommonBlock" asp-advanced="true">@await Html.PartialAsync("_Order.Common", Model)</nop-card>

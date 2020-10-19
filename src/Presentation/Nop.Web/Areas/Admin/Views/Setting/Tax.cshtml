@@ -48,7 +48,7 @@
                     @await Component.InvokeAsync("SettingMode")
                     <div asp-validation-summary="All"></div>
 
-                    <nop-cards id="taxsettings-panels">
+                    <nop-cards id="taxsettings-cards">
                         <nop-card asp-name="taxsettings-common" asp-icon="fa fa-info" asp-title="@T("Admin.Configuration.Settings.Tax.BlockTitle.Common")" asp-hide-block-attribute-name="@hideCommonBlockAttributeName" asp-hide="@hideCommonBlock" asp-advanced="false">@await Html.PartialAsync("_Tax.Common", Model)</nop-card>
                         <nop-card asp-name="taxsettings-default-tax-address" asp-icon="fa fa-address-book-o" asp-title="@T("Admin.Configuration.Settings.Tax.DefaultTaxAddress")" asp-hide-block-attribute-name="@hideDefaultTaxAddressBlockAttributeName" asp-hide="@hideDefaultTaxAddressBlock" asp-advanced="false">@await Html.PartialAsync("_Tax.DefaultTaxAddress", Model)</nop-card>
                         <nop-card asp-name="taxsettings-tax-displaying" asp-icon="fa fa-television" asp-title="@T("Admin.Configuration.Settings.Tax.BlockTitle.TaxDisplaying")" asp-hide-block-attribute-name="@hideTaxDisplayingBlockAttributeName" asp-hide="@hideTaxDisplayingBlock" asp-advanced="false">@await Html.PartialAsync("_Tax.TaxDisplaying", Model)</nop-card>

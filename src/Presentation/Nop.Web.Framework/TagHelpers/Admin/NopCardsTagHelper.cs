@@ -8,7 +8,7 @@ namespace Nop.Web.Framework.TagHelpers.Admin
     /// nop-card tag helper
     /// </summary>
     [HtmlTargetElement("nop-cards", Attributes = ID_ATTRIBUTE_NAME)]
-    public class NopPanelsTagHelper : TagHelper
+    public class NopCardsTagHelper : TagHelper
     {
         private const string ID_ATTRIBUTE_NAME = "id";
 

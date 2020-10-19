@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <nop-cards id="templates-panels">
+            <nop-cards id="templates-cards">
                 <nop-card asp-name="templates-category" asp-icon="fa fa-sitemap" asp-title="@T("Admin.System.Templates.Category")" asp-hide-block-attribute-name="@hideCategoryBlockAttributeName" asp-hide="@hideCategoryBlock">@await Html.PartialAsync("_List.Category", Model)</nop-card>
                 <nop-card asp-name="templates-manufacturer" asp-icon="fa fa-industry" asp-title="@T("Admin.System.Templates.Manufacturer")" asp-hide-block-attribute-name="@hideManufacturerBlockAttributeName" asp-hide="@hideManufacturerBlock">@await Html.PartialAsync("_List.Manufacturer", Model)</nop-card>
                 <nop-card asp-name="templates-product" asp-icon="fa fa-cube" asp-title="@T("Admin.System.Templates.Product")" asp-hide-block-attribute-name="@hideProductBlockAttributeName" asp-hide="@hideProductBlock">@await Html.PartialAsync("_List.Product", Model)</nop-card>

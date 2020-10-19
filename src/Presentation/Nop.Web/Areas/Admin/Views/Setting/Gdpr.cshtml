@@ -37,7 +37,7 @@
                 @await Component.InvokeAsync("SettingMode")
                 <div asp-validation-summary="All"></div>
 
-                <nop-cards id="gdprsettings-panels">
+                <nop-cards id="gdprsettings-cards">
                     <nop-card asp-name="gdprsettings-common" asp-icon="fa fa-info" asp-title="@T("Admin.Configuration.Settings.Gdpr.BlockTitle.Common")" asp-hide-block-attribute-name="@hideCommonBlockAttributeName" asp-hide="@hideCommonBlock" asp-advanced="false">@await Html.PartialAsync("_Gdpr.Common", Model)</nop-card>
                     <nop-card asp-name="gdprsettings-consents" asp-icon="fa fa-thumbs-o-up" asp-title="@T("Admin.Configuration.Settings.Gdpr.BlockTitle.Consents")" asp-hide-block-attribute-name="@hideConsentsBlockAttributeName" asp-hide="@hideConsentsBlock" asp-advanced="true">@await Html.PartialAsync("_Gdpr.Consents", Model)</nop-card>
 

@@ -73,7 +73,7 @@
                 @await Component.InvokeAsync("SettingMode")
                 <div asp-validation-summary="All"></div>
 
-                <nop-cards id="catalogsettings-panels">
+                <nop-cards id="catalogsettings-cards">
                     <nop-card asp-name="catalogsettings-search" asp-icon="fa fa-search" asp-title="@T("Admin.Configuration.Settings.Catalog.BlockTitle.Search")" asp-hide-block-attribute-name="@hideSearchBlockAttributeName" asp-hide="@hideSearchBlock" asp-advanced="false">@await Html.PartialAsync("_Catalog.Search", Model)</nop-card>
                     <nop-card asp-name="catalogsettings-product-reviews" asp-icon="fa fa-comment-o" asp-title="@T("Admin.Configuration.Settings.Catalog.BlockTitle.ProductReviews")" asp-hide-block-attribute-name="@hideProductReviewsBlockAttributeName" asp-hide="@hideProductReviewsBlock" asp-advanced="false">@await Html.PartialAsync("_Catalog.ProductReviews", Model)</nop-card>
                     <nop-card asp-name="catalogsettings-review-types" asp-icon="fa fa-comments-o" asp-title="@T("Admin.Settings.ReviewType")" asp-hide-block-attribute-name="@hideReviewTypesBlockAttributeName" asp-hide="@hideReviewTypesBlock" asp-advanced="true">@await Html.PartialAsync("../ReviewType/List", Model.ReviewTypeSearchModel)</nop-card>

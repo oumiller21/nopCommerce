@@ -38,7 +38,7 @@
             <div class="form-horizontal">
                 <div class="panel-group">
                     @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.ProductAttributeCombinationDetailsTop, additionalData = Model })
-                    <div class="card card-default panel-popup">
+                    <div class="card card-default card-popup">
                         <div class="card-body">
                             @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes)
                             <div class="form-group row">

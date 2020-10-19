@@ -42,7 +42,7 @@
                 @await Component.InvokeAsync("SettingMode")
                 <div asp-validation-summary="All"></div>
 
-                <nop-cards id="forumsettings-panels">
+                <nop-cards id="forumsettings-cards">
                     <nop-card asp-name="forumsettings-common" asp-icon="fa fa-info" asp-title="@T("Admin.Configuration.Settings.Forums.BlockTitle.Common")" asp-hide-block-attribute-name="@hideCommonBlockAttributeName" asp-hide="@hideCommonBlock" asp-advanced="false">@await Html.PartialAsync("_Forum.Common", Model)</nop-card>
                     <nop-card asp-name="forumsettings-permissions" asp-icon="fa fa-shield" asp-title="@T("Admin.Configuration.Settings.Forums.BlockTitle.Permissions")" asp-hide-block-attribute-name="@hidePermissionsBlockAttributeName" asp-hide="@hidePermissionsBlock" asp-advanced="false">@await Html.PartialAsync("_Forum.Permissions", Model)</nop-card>
                     <nop-card asp-name="forumsettings-page-sizes" asp-icon="fa fa-file-o" asp-title="@T("Admin.Configuration.Settings.Forums.BlockTitle.PageSizes")" asp-hide-block-attribute-name="@hidePageSizesBlockAttributeName" asp-hide="@hidePageSizesBlock" asp-advanced="true">@await Html.PartialAsync("_Forum.PageSizes", Model)</nop-card>

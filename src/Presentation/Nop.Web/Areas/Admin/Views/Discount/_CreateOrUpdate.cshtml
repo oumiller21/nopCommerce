@@ -26,7 +26,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="form-horizontal">
-            <nop-cards id="discount-panels">
+            <nop-cards id="discount-cards">
                 <nop-card asp-name="discount-info" asp-icon="fa fa-info" asp-title="@T("Admin.Promotions.Discounts.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
                 <nop-card asp-name="discount-requirements" asp-icon="fa fa-list" asp-title="@T("Admin.Promotions.Discounts.Requirements")" asp-hide-block-attribute-name="@hideRequirementsBlockAttributeName" asp-hide="@hideRequirementsBlock">@await Html.PartialAsync("_CreateOrUpdate.Requirements", Model)</nop-card>
                 <nop-card id="discount-applied-to-products-panel" asp-name="discount-applied-to-products" asp-icon="fa fa-object-group" asp-title="@T("Admin.Promotions.Discounts.AppliedToProducts")" asp-hide-block-attribute-name="@hideAppliedToProductsBlockAttributeName" asp-hide="@hideAppliedToProductsBlock">@await Html.PartialAsync("_CreateOrUpdate.AppliedToProducts", Model)</nop-card>

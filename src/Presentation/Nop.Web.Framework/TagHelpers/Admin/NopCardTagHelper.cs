@@ -7,12 +7,11 @@ using Nop.Web.Framework.Extensions;
 
 namespace Nop.Web.Framework.TagHelpers.Admin
 {
-    //MyCode
     /// <summary>
     /// "nop-card tag helper
     /// </summary>
     [HtmlTargetElement("nop-card", Attributes = NAME_ATTRIBUTE_NAME)]
-    public class NopcardTagHelper : TagHelper
+    public class NopCardTagHelper : TagHelper
     {
         private const string NAME_ATTRIBUTE_NAME = "asp-name";
         private const string TITLE_ATTRIBUTE_NAME = "asp-title";
@@ -24,19 +23,19 @@ namespace Nop.Web.Framework.TagHelpers.Admin
         private readonly IHtmlHelper _htmlHelper;
 
         /// <summary>
-        /// Title of the panel
+        /// Title of the card
         /// </summary>
         [HtmlAttributeName(TITLE_ATTRIBUTE_NAME)]
         public string Title { get; set; }
 
         /// <summary>
-        /// Name of the panel
+        /// Name of the card
         /// </summary>
         [HtmlAttributeName(NAME_ATTRIBUTE_NAME)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Name of the hide attribute of the panel
+        /// Name of the hide attribute of the card
         /// </summary>
         [HtmlAttributeName(HIDE_BLOCK_ATTRIBUTE_NAME_ATTRIBUTE_NAME)]
         public string HideBlockAttributeName { get; set; }
@@ -48,13 +47,13 @@ namespace Nop.Web.Framework.TagHelpers.Admin
         public bool IsHide { get; set; }
 
         /// <summary>
-        /// Indicates whether a panel is advanced or not
+        /// Indicates whether a card is advanced or not
         /// </summary>
         [HtmlAttributeName(IS_ADVANCED_ATTRIBUTE_NAME)]
         public bool IsAdvanced { get; set; }
 
         /// <summary>
-        /// Panel icon
+        /// Card icon
         /// </summary>
         [HtmlAttributeName(CARD_ICON_ATTRIBUTE_NAME)]
         public string CardIconIsAdvanced { get; set; }
@@ -70,7 +69,7 @@ namespace Nop.Web.Framework.TagHelpers.Admin
         /// Ctor
         /// </summary>
         /// <param name="htmlHelper">HTML helper</param>
-        public NopcardTagHelper(IHtmlHelper htmlHelper)
+        public NopCardTagHelper(IHtmlHelper htmlHelper)
         {
             _htmlHelper = htmlHelper;
         }

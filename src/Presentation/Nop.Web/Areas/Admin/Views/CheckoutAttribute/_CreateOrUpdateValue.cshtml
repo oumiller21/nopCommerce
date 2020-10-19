@@ -24,7 +24,7 @@
         <div class="form-horizontal">
         <div class="panel-group">
             @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.CheckoutAttributeValueDetailsTop, additionalData = Model })
-            <div class="card card-default panel-popup">
+            <div class="card card-default card-popup">
                 <div class="card-body">
                     @(Html.LocalizedEditor<CheckoutAttributeValueModel, CheckoutAttributeValueLocalizedModel>("checkoutattributevalue-localized",
                     @<div>

@@ -46,7 +46,7 @@
         <div class="container-fluid">           
             <div class="form-horizontal">
                     @await Component.InvokeAsync("SettingMode")
-                    <nop-cards id="customersettings-panels">
+                    <nop-cards id="customersettings-cards">
                         <nop-card asp-name="customersettings-common" asp-icon="fa fa-info" asp-title="@T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Common")" asp-hide-block-attribute-name="@hideCommonBlockAttributeName" asp-hide="@hideCommonBlock" asp-advanced="false">@await Html.PartialAsync("_CustomerUser.Common", Model)</nop-card>
                         <nop-card asp-name="customersettings-security" asp-icon="fa fa-shield" asp-title="@T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Password")" asp-hide-block-attribute-name="@hideSecurityBlockAttributeName" asp-hide="@hideSecurityBlock" asp-advanced="true">@await Html.PartialAsync("_CustomerUser.Security", Model)</nop-card>
                         <nop-card asp-name="customersettings-account" asp-icon="fa fa-user" asp-title="@T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Account")" asp-hide-block-attribute-name="@hideAccountBlockAttributeName" asp-hide="@hideAccountBlock" asp-advanced="true">@await Html.PartialAsync("_CustomerUser.Account", Model)</nop-card>

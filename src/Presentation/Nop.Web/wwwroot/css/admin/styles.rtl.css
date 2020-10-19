@@ -1032,7 +1032,7 @@ div.dataTables_wrapper {
 .card-search .k-multiselect.k-header {
     max-width: 423px;
 }
-.panel-popup .btn-search {
+.card-popup .btn-search {
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -1670,10 +1670,10 @@ div.dataTables_wrapper div.dataTables_paginate {
     .form-horizontal .label-wrapper .ico-help {
         display: none;
     }
-    .form-horizontal .panel-popup .form-group input[type=checkbox] {
+    .form-horizontal .card-popup .form-group input[type=checkbox] {
         margin-top: 10px;
     }
-    .form-horizontal .panel-popup .ico-help {
+    .form-horizontal .card-popup .ico-help {
       display: block;
     }
     .form-control {
@@ -1768,13 +1768,13 @@ div.dataTables_wrapper div.dataTables_paginate {
         margin-bottom: 3px;
         margin-top: 5px;
     }
-    .form-horizontal .panel-popup .label-wrapper {
+    .form-horizontal .card-popup .label-wrapper {
         float: left;
     }
-        .form-horizontal .panel-popup .label-wrapper .control-label {
+        .form-horizontal .card-popup .label-wrapper .control-label {
             padding-top: 0;
         }
-    .form-horizontal .panel-popup .form-group input[type=checkbox] {
+    .form-horizontal .card-popup .form-group input[type=checkbox] {
         margin-top: 10px;
     }
     .form-group input[type=checkbox] {
@@ -1804,7 +1804,7 @@ div.dataTables_wrapper div.dataTables_paginate {
     }
 
     /* FORM ELEMENTS */
-    .form-horizontal .panel-popup .label-wrapper {
+    .form-horizontal .card-popup .label-wrapper {
         float: right;
     }
     div.dataTables_wrapper div.dataTables_length {

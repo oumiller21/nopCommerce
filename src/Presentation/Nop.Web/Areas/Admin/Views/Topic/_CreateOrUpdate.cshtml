@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <nop-cards id="topic-details-panels">
+            <nop-cards id="topic-details-cards">
                 <nop-card asp-name="topic-info" asp-icon="fa fa-info" asp-title="@T("Admin.ContentManagement.Topics.Info")" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Info", Model)</nop-card>
                 <nop-card asp-name="topic-display" asp-icon="fa fa-television" asp-title="@T("Admin.ContentManagement.Topics.Display")" asp-hide-block-attribute-name="@hideDisplayBlockAttributeName" asp-hide="@hideDisplayBlock" asp-advanced="false">@await Html.PartialAsync("_CreateOrUpdate.Display", Model)</nop-card>
                 <nop-card asp-name="topic-seo" asp-icon="fa fa-search-plus" asp-title="@T("Admin.Common.SEO")" asp-hide-block-attribute-name="@hideSeoBlockAttributeName" asp-hide="@hideSeoBlock" asp-advanced="true">@await Html.PartialAsync("_CreateOrUpdate.Seo", Model)</nop-card>
