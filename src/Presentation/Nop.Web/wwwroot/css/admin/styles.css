@@ -924,7 +924,7 @@ div.dataTables_wrapper div.dataTables_processing .fa {
     float: right;
     min-height: 28px;
 }
-.form-horizontal .label-wrapper .control-label {
+.form-horizontal .label-wrapper .col-form-label {
     display: table-cell;
 }
 .form-horizontal .label-wrapper .ico-help {
@@ -937,7 +937,6 @@ div.dataTables_wrapper div.dataTables_processing .fa {
     width: 16px;
 }
 .form-horizontal .label-wrapper i.fa:before {
-    position: absolute;
     top: 5px;
 }
 .form-horizontal span.required {
@@ -1726,7 +1725,7 @@ div.dataTables_wrapper div.dataTables_paginate {
     .form-horizontal .card-popup .label-wrapper {
         float: right;
     }
-        .form-horizontal .card-popup .label-wrapper .control-label {
+        .form-horizontal .card-popup .label-wrapper .col-form-label {
             padding-top: 0;
         }
     .form-horizontal .card-popup .form-group input[type=checkbox] {

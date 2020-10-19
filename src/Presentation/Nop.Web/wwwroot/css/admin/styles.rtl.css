@@ -926,7 +926,7 @@ div.dataTables_wrapper {
     float: left;
     min-height: 28px;
 }
-    .form-horizontal .label-wrapper .control-label {
+    .form-horizontal .label-wrapper .col-form-label {
         display: table-cell;        
     }
 .form-horizontal .label-wrapper .ico-help {
@@ -939,7 +939,6 @@ div.dataTables_wrapper {
         width: 12px;
     }
 .form-horizontal .label-wrapper i.fa:before {
-            position: absolute;
             left: 1px;
             top: 5px;
         }
@@ -1771,7 +1770,7 @@ div.dataTables_wrapper div.dataTables_paginate {
     .form-horizontal .card-popup .label-wrapper {
         float: left;
     }
-        .form-horizontal .card-popup .label-wrapper .control-label {
+        .form-horizontal .card-popup .label-wrapper .col-form-label {
             padding-top: 0;
         }
     .form-horizontal .card-popup .form-group input[type=checkbox] {
