@@ -600,12 +600,31 @@ td.k-state-focused.k-state-selected {
     padding: 0 3px;
 }
 .ui-tooltip {
-    z-index: 10005;
+  z-index: 10005;
 }
 
+.tooltip {
+  opacity: 100;
+}
+
+  .tooltip.show {
+    opacity: 100;
+  }
+
+  .tooltip .arrow {
+    display: none;
+  }
+
 .tooltip-inner {
-  background-color: #ede5ef !important;
+  background-color: #fff;
   color: #0e0e0e;
+  opacity: 100;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border: 1px solid #aaa;
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 1.1em;
+  text-align: right;
+  max-width: 400px;
 }
 
 .k-multiselect {
@@ -743,6 +762,16 @@ td.k-state-focused.k-state-selected {
 }
 input[type="text"].k-input {
     box-sizing: content-box;
+}
+
+.page-item.active .page-link {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+
+.pagination > li > a {
+  background: #fafafa;
+  color: #666;
 }
 
 /* HEADER */
@@ -1127,6 +1156,13 @@ table td .form-group {
     margin-bottom: 0;
     margin-top: 2px;
 }
+
+div.dataTables_wrapper > div.row.margin-t-5 > div.col-lg-1.col-xs-12 > div > div > button {
+  background-color: #f4f4f4;
+  color: #444;
+  border-color: #ddd;
+}
+
 .table-bordered {
     border-collapse: separate;
     border-spacing: 0;
