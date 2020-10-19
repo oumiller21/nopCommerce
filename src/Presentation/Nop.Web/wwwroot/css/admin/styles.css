@@ -184,9 +184,6 @@ ul.common-list {
   resize: vertical;
 }
 
-.card.collapsible-card .sub-panel, .card.collapsible-card .card.sub-panel {
-  margin-bottom: 5px;
-}
 
 .card.collapsible-card > .card-header {
   padding-right: 30px;
@@ -212,7 +209,7 @@ ul.common-list {
   font-size: 12px;
 }
 
-.card.collapsible-card .card-container .panel-group {
+.card.collapsible-card .card-container .cards-group {
   margin-bottom: 0;
 }
 
@@ -226,11 +223,6 @@ ul.common-list {
   left: 0;
   top: 11px;
   text-align: center;
-}
-
-.card.collapsible-card .card-header i.panel-icon {
-  font-size: 14px;
-  padding-right: 0 !important;
 }
 
 .card-info:not(.card-outline) > .card-header {
@@ -1085,7 +1077,7 @@ input[type=file].form-control {
 .editor-settings-modal-dialog .form-group input[type=checkbox] {
     margin-top: 4px;
 }
-.editor-settings-modal-dialog .panel-group {
+.editor-settings-modal-dialog .cards-group {
     margin-bottom: 0;
 }
 .editor-settings-modal-dialog .card-body, .editor-settings-modal-dialog .card-header {

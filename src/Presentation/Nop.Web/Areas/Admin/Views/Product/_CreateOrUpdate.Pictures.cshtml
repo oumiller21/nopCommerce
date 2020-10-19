@@ -3,8 +3,6 @@
 <div class="card-body">
     @if (Model.Id > 0)
     {
-    <div class="sub-panel">
-
         @await Html.PartialAsync("Table", new DataTablesModel
         {
             Name = "productpictures-grid",
@@ -64,7 +62,6 @@
                 return '<a href="' + row.PictureUrl + '" target="_blank"><img alt="' + row.PictureId + '" src="' + row.PictureUrl + '" width="150" /></a>';
             }
         </script>
-    </div>
 
         <div class="card card-default">
             <div class="card-header">

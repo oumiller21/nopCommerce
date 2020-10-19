@@ -1,7 +1,7 @@
 @model AffiliateModel
 
-<div class="panel-group">
-    <div class="sub-panel card-search">
+<div class="card-body">
+    <div class="card card-search">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-7">
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="sub-panel">
+    <div class="card">
         <div class="card-body">
             @await Html.PartialAsync("Table", new DataTablesModel
             {

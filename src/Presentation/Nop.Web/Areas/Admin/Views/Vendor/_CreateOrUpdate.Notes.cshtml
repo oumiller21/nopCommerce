@@ -1,8 +1,7 @@
 @model VendorModel
 
 <div class="card-body">    
-    <div class="sub-panel">
-        @await Html.PartialAsync("Table", new DataTablesModel
+    @await Html.PartialAsync("Table", new DataTablesModel
         {
             Name = "vendornotes-grid",
             UrlRead = new DataUrl("VendorNotesSelect", "Vendor", new RouteValueDictionary { [nameof(Model.VendorNoteSearchModel.VendorId)] = Model.VendorNoteSearchModel.VendorId }),
@@ -31,7 +30,6 @@
                 }
             }
         })
-    </div>
 
     <div class="card card-default">
         <div class="card-header">

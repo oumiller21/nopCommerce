@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="form-horizontal">
             @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.ShippingMethodDetailsTop, additionalData = Model })
-            <div class="panel-group">
+            <div class="cards-group">
                 <div class="card card-default">
                     <div class="card-body">
                         @(Html.LocalizedEditor<ShippingMethodModel, ShippingMethodLocalizedModel>("shipping-method-localized",

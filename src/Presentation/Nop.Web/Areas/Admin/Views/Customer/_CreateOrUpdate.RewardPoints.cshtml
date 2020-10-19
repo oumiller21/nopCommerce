@@ -4,8 +4,7 @@
 @using Nop.Services.Stores
 @inject IStoreService storeService
 <div class="card-body">
-    <div class="sub-panel">
-        @await Html.PartialAsync("Table", new DataTablesModel
+    @await Html.PartialAsync("Table", new DataTablesModel
         {
             Name = "customer-rewardpoints-grid",
             UrlRead = new DataUrl("RewardPointsHistorySelect", "Customer", new RouteValueDictionary { [nameof(Model.CustomerRewardPointsSearchModel.CustomerId)] = Model.CustomerRewardPointsSearchModel.CustomerId }),
@@ -42,7 +41,6 @@
                 }
             }
         })
-    </div>
     <div class="card card-default no-margin">
         <div class="card-header">
             @T("Admin.Customers.Customers.RewardPoints.AddTitle")

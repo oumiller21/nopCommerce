@@ -31,7 +31,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="form-horizontal">
-                <div class="panel-group">
+                <div class="cards-group">
                     <div class="card card-default card-search">
                         <div class="card-body">
                             <div class="row search-row @(!hideSearchBlock ? "opened" : "")" data-hideAttribute="@hideSearchBlockAttributeName">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-group">
+                <div class="cards-group">
                     <div class="card card-default">
                         <div class="card-body">
                             @await Html.PartialAsync("Table", new DataTablesModel

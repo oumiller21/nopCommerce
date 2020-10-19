@@ -6,7 +6,7 @@
 
 @await Component.InvokeAsync("StoreScopeConfiguration")
 <form asp-controller="PaymentCheckMoneyOrder" asp-action="Configure" method="post">
-    <div class="panel-group">
+    <div class="cards-group">
         <div class="card card-default">
             <div class="card-body">
                 @(Html.LocalizedEditor<ConfigurationModel, ConfigurationModel.ConfigurationLocalizedModel>("plugin-settings-localized",

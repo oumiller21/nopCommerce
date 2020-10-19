@@ -18,7 +18,7 @@
             If you already enabled the <a href="@Url.Action("GeneralCommon", "Setting", new { area = AreaNames.Admin })" target="_blank">settings</a> to display Cookie Consent for users, you can pause sending pixel fires to Facebook for users who have not accepted Cookie Consent by enabling the appropriate settings below.<br />
             See also <a href="https://developers.facebook.com/docs/facebook-pixel/support#pixelcollect" target="_blank">What data does the Facebook pixel collect?</a><br />
         </p>
-        <div class="panel-group">
+        <div class="cards-group">
             <div class="card card-default">
                 <div class="card-body">
                     <div class="form-group row">
@@ -192,7 +192,7 @@
 
         @if (Model.Id > 0)
         {
-            <div class="panel-group">
+            <div class="cards-group">
                 <div class="card card-default">
                     <div class="card-header">
                         @T("Plugins.Widgets.FacebookPixel.Configuration.CustomEvents")

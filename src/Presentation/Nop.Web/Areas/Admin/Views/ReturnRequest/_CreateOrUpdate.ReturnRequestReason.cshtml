@@ -3,7 +3,7 @@
 <div asp-validation-summary="All"></div>
 <input asp-for="Id" type="hidden" />
 
-<div class="panel-group">
+<div class="cards-group">
     @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.ReturnRequestReasonSettingsTop })
     <div class="card card-default">
         <div class="card-body">

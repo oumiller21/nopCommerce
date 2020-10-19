@@ -185,10 +185,6 @@ ul.common-list {
         resize: vertical;
     }
 
-    .card.collapsed-card .sub-panel, .card.collapsed-card .card.sub-panel {
-        margin-bottom: 5px;
-    }
-
     .card.collapsed-card > .card-header {
         padding-left: 30px;
         position: relative;
@@ -213,7 +209,7 @@ ul.common-list {
         font-size: 12px;
     }
 
-    .card.collapsed-card .card-container .panel-group {
+    .card.collapsed-card .card-container .cards-group {
         margin-bottom: 0;
     }
 
@@ -227,11 +223,6 @@ ul.common-list {
         right: 0;
         top: 11px;
         text-align: center;
-    }
-
-    .card.collapsed-card .card-header i.panel-icon {
-        font-size: 14px;
-        padding-left: 0 !important;
     }
 
     .card.collapsed-card .card-body.collapsed {
@@ -1090,7 +1081,7 @@ input[type=file].form-control {
     .editor-settings-modal-dialog .form-group input[type=checkbox] {
         margin-top: 4px;
     }
-    .editor-settings-modal-dialog .panel-group {
+    .editor-settings-modal-dialog .cards-group {
         margin-bottom: 0;
     }
     .editor-settings-modal-dialog .card-body, .editor-settings-modal-dialog .card-header {
