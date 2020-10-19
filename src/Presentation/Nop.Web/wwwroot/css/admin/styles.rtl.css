@@ -172,7 +172,7 @@ ul.common-list {
     background: none;
 }
 
-.card.collapsed-card {
+.card.card-secondary {
   margin-bottom: 10px;
   border-top: 3px solid #d2d6de;
   border-left: none;
@@ -181,43 +181,40 @@ ul.common-list {
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
-    .card.collapsed-card textarea {
+    .card.card-secondary textarea {
         resize: vertical;
     }
 
-    .card.collapsed-card > .card-header {
-        padding-left: 30px;
-        position: relative;
-        cursor: pointer;
-    }
+  .card.card-secondary > .card-header {
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #444;
+    border-bottom: 1px solid #f4f4f4;
+  }
 
-    .card.collapsed-card > .card-header {
-        background-color: #ffffff;
-        color: #444;
-        border-bottom: 1px solid #f4f4f4;
-    }
-
-        .card.collapsed-card > .card-header span {
+        .card.card-secondary > .card-header div {
             font-size: 16px;
             font-weight: 400;
         }
 
-    .card.collapsed-card .card-header i.toggle-icon {
+    .card.card-secondary .card-header i.toggle-icon {
         position: absolute;
         left: 15px;
         top: 15px;
         font-size: 12px;
     }
 
-    .card.collapsed-card .card-container .cards-group {
+    .card.card-secondary .card-container .cards-group {
         margin-bottom: 0;
     }
 
-    .card.collapsed-card .card-body {
+    .card.card-secondary .card-body {
         overflow: hidden;
     }
 
-    .card.collapsed-card .card-header div.icon-container {
+    .card.card-secondary .card-header div.icon-container {
         width: 45px;
         position: absolute;
         right: 0;
@@ -225,7 +222,7 @@ ul.common-list {
         text-align: center;
     }
 
-    .card.collapsed-card .card-body.collapsed {
+    .card.card-secondary .card-body.collapsed {
         display: none;
     }
 

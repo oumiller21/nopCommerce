@@ -171,7 +171,7 @@ ul.common-list {
   background: none;
 }
 
-.card.collapsed-card {
+.card.card-secondary {
     margin-bottom: 10px;
     border-top: 3px solid #d2d6de;
     border-left: none;
@@ -180,49 +180,38 @@ ul.common-list {
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
-.card.collapsible-card textarea {
+.card.card-secondary textarea {
   resize: vertical;
 }
 
 
-.card.collapsible-card > .card-header {
+.card.card-secondary > .card-header {
   padding-right: 30px;
   position: relative;
   cursor: pointer;
-}
-
-.card.collapsible-card > .card-header {
   background-color: #ffffff;
   color: #444;
   border-bottom: 1px solid #f4f4f4;
 }
 
-  .card.collapsible-card > .card-header span {
+  .card.card-secondary > .card-header div {
     font-size: 16px;
     font-weight: 400;
   }
 
-.card.collapsible-card .card-header i.toggle-icon {
+.card.card-secondary .card-header i.toggle-icon {
   position: absolute;
   right: 15px;
   top: 15px;
   font-size: 12px;
 }
 
-.card.collapsible-card .card-container .cards-group {
+.card.card-secondary .card-container .cards-group {
   margin-bottom: 0;
 }
 
-.card.collapsible-card .card-container {
+.card.card-secondary .card-container {
   overflow: hidden;
-}
-
-.card.collapsible-card .card-header div.icon-container {
-  width: 45px;
-  position: absolute;
-  left: 0;
-  top: 11px;
-  text-align: center;
 }
 
 .card-info:not(.card-outline) > .card-header {
