@@ -3,8 +3,8 @@ using System.Linq;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Polls;
-using Nop.Core.Domain.Stores;
 using Nop.Data;
+using Nop.Services.Stores;
 
 namespace Nop.Services.Polls
 {
@@ -19,7 +19,7 @@ namespace Nop.Services.Polls
         private readonly IRepository<Poll> _pollRepository;
         private readonly IRepository<PollAnswer> _pollAnswerRepository;
         private readonly IRepository<PollVotingRecord> _pollVotingRecordRepository;
-        private readonly IRepository<StoreMapping> _storeMappingRepository;
+        private readonly IStoreMappingService _storeMappingService;
 
         #endregion
 
@@ -29,13 +29,13 @@ namespace Nop.Services.Polls
             IRepository<Poll> pollRepository,
             IRepository<PollAnswer> pollAnswerRepository,
             IRepository<PollVotingRecord> pollVotingRecordRepository,
-             IRepository<StoreMapping> storeMappingRepository)
+            IStoreMappingService storeMappingService)
         {
             _catalogSettings = catalogSettings;
             _pollRepository = pollRepository;
             _pollAnswerRepository = pollAnswerRepository;
             _pollVotingRecordRepository = pollVotingRecordRepository;
-            _storeMappingRepository = storeMappingRepository;
+            _storeMappingService = storeMappingService;
         }
 
         #endregion
@@ -91,24 +91,9 @@ namespace Nop.Services.Polls
                 query = query.Where(poll => poll.SystemKeyword == systemKeyword);
 
             //filter by store
-            if (storeId > 0 && !_catalogSettings.IgnoreStoreLimitations)
+            if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Poll>(storeId))
             {
-                query = from poll in query
-                    join storeMapping in _storeMappingRepository.Table
-                        on new
-                        {
-                            poll.Id,
-                            Name = nameof(Poll)
-                        }
-                        equals new
-                        {
-                            Id = storeMapping.EntityId,
-                            Name = storeMapping.EntityName
-                        } 
-                        into storeMappingsWithNulls
-                    from storeMapping in storeMappingsWithNulls.DefaultIfEmpty()
-                    where !poll.LimitedToStores || storeMapping.StoreId == storeId
-                    select poll;
+                query = query.Where(_storeMappingService.ApplyStoreMapping<Poll>(storeId));
             }
 
             //order records by display order

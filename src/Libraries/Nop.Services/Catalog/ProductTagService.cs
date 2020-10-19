@@ -6,7 +6,6 @@ using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Security;
-using Nop.Core.Domain.Stores;
 using Nop.Data;
 using Nop.Data.DataProviders.SQL;
 using Nop.Services.Customers;
@@ -24,14 +23,13 @@ namespace Nop.Services.Catalog
 
         private readonly CatalogSettings _catalogSettings;
         private readonly ICustomerService _customerService;
-        protected readonly IRepository<AclRecord> _aclRepository;
+        private readonly IRepository<AclRecord> _aclRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<ProductProductTagMapping> _productProductTagMappingRepository;
         private readonly IRepository<ProductTag> _productTagRepository;
-        protected readonly IRepository<StoreMapping> _storeMappingRepository;
         private readonly IStaticCacheManager _staticCacheManager;
-        protected readonly IStoreMappingService _storeMappingService;
-        protected readonly IStoreService _storeService;
+        private readonly IStoreMappingService _storeMappingService;
+        private readonly IStoreService _storeService;
         private readonly IUrlRecordService _urlRecordService;
         private readonly IWorkContext _workContext;
 
@@ -45,7 +43,6 @@ namespace Nop.Services.Catalog
             IRepository<Product> productRepository,
             IRepository<ProductProductTagMapping> productProductTagMappingRepository,
             IRepository<ProductTag> productTagRepository,
-            IRepository<StoreMapping> storeMappingRepository,
             IStaticCacheManager staticCacheManager,
             IStoreMappingService storeMappingService,
             IStoreService storeService,
@@ -58,7 +55,6 @@ namespace Nop.Services.Catalog
             _productRepository = productRepository;
             _productProductTagMappingRepository = productProductTagMappingRepository;
             _productTagRepository = productTagRepository;
-            _storeMappingRepository = storeMappingRepository;
             _staticCacheManager = staticCacheManager;
             _storeMappingService = storeMappingService;
             _storeService = storeService;
@@ -100,21 +96,27 @@ namespace Nop.Services.Catalog
             return _staticCacheManager.Get(key, () =>
             {
                 var customerRolesIds = _customerService.GetCustomerRoleIds(_workContext.CurrentCustomer);
-                var skipStoreMapping = _catalogSettings.IgnoreStoreLimitations || !_storeMappingService.IsEntityMappingExists<Product>(storeId);
+
+                var pTagMapping = _productProductTagMappingRepository.Table;
+
+                if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Product>(storeId))
+                {
+                    var storeMappedQuery = _productRepository.Table.Where(_storeMappingService.ApplyStoreMapping<Product>(storeId));
+                    pTagMapping = pTagMapping.Where(pc => storeMappedQuery.Any(sm => pc.ProductId == sm.Id));
+                }
 
                 var pTagCount = from pt in _productTagRepository.Table
-                    from ptm in _productProductTagMappingRepository.Table.Where(m => m.ProductTagId == pt.Id).DefaultIfEmpty()
-                    from p in _productRepository.Table.Where(p => p.Id == ptm.ProductId).DefaultIfEmpty()
+                    join ptm in pTagMapping on pt.Id equals ptm.ProductTagId into ptmDefaults
+                    from ptm in ptmDefaults.DefaultIfEmpty()
+                    join p in _productRepository.Table on ptm.ProductId equals p.Id into productDefaults
+                    from p in productDefaults.DefaultIfEmpty()
                     where !p.Deleted && p.Published && 
-                        (
-                            (_catalogSettings.IgnoreAcl || p.SubjectToAcl(_aclRepository.Table, customerRolesIds)) &&
-                            (skipStoreMapping || p.LimitedToStores(_storeMappingRepository.Table, storeId))
-                        )
+                        (_catalogSettings.IgnoreAcl || p.SubjectToAcl(_aclRepository.Table, customerRolesIds))
                     group pt by pt.Id into ptGrouped
                     select new {
                         ProductTagId = ptGrouped.Key,
                         ProductCount = ptGrouped.Count()
-                    };
+                    };                
 
                 return pTagCount.ToDictionary(item => item.ProductTagId, item => item.ProductCount);
             });

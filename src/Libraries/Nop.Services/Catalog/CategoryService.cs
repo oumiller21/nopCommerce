@@ -7,7 +7,6 @@ using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Discounts;
 using Nop.Core.Domain.Security;
-using Nop.Core.Domain.Stores;
 using Nop.Data;
 using Nop.Services.Customers;
 using Nop.Services.Discounts;
@@ -33,7 +32,6 @@ namespace Nop.Services.Catalog
         private readonly IRepository<DiscountCategoryMapping> _discountCategoryMappingRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<ProductCategory> _productCategoryRepository;
-        private readonly IRepository<StoreMapping> _storeMappingRepository;
         private readonly IStaticCacheManager _staticCacheManager;
         private readonly IStoreContext _storeContext;
         private readonly IStoreMappingService _storeMappingService;
@@ -52,7 +50,6 @@ namespace Nop.Services.Catalog
             IRepository<DiscountCategoryMapping> discountCategoryMappingRepository,
             IRepository<Product> productRepository,
             IRepository<ProductCategory> productCategoryRepository,
-            IRepository<StoreMapping> storeMappingRepository,
             IStaticCacheManager staticCacheManager,
             IStoreContext storeContext,
             IStoreMappingService storeMappingService,
@@ -67,7 +64,6 @@ namespace Nop.Services.Catalog
             _discountCategoryMappingRepository = discountCategoryMappingRepository;
             _productRepository = productRepository;
             _productCategoryRepository = productCategoryRepository;
-            _storeMappingRepository = storeMappingRepository;
             _staticCacheManager = staticCacheManager;
             _storeContext = storeContext;
             _storeMappingService = storeMappingService;
@@ -186,23 +182,15 @@ namespace Nop.Services.Catalog
                             from acl in c_acl.DefaultIfEmpty()
                             where !c.SubjectToAcl || allowedCustomerRolesIds.Contains(acl.CustomerRoleId)
                             select c;
+
+                        query = query.Distinct();
                     }
 
-                    if (storeId > 0 && !_catalogSettings.IgnoreStoreLimitations)
+                    //Store mapping
+                    if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Category>(storeId))
                     {
-                        //Store mapping
-                        query = from c in query
-                            join sm in _storeMappingRepository.Table
-                                on new {c1 = c.Id, c2 = nameof(Category)} equals new
-                                {
-                                    c1 = sm.EntityId, c2 = sm.EntityName
-                                } into c_sm
-                            from sm in c_sm.DefaultIfEmpty()
-                            where !c.LimitedToStores || storeId == sm.StoreId
-                            select c;
+                        query = query.Where(_storeMappingService.ApplyStoreMapping<Category>(storeId));
                     }
-
-                    query = query.Distinct();
                 }
 
                 return query.OrderBy(c => c.ParentCategoryId).ThenBy(c => c.DisplayOrder).ThenBy(c => c.Id);
@@ -246,23 +234,17 @@ namespace Nop.Services.Catalog
                             from acl in c_acl.DefaultIfEmpty()
                             where !c.SubjectToAcl || allowedCustomerRolesIds.Contains(acl.CustomerRoleId)
                             select c;
+
+                        query = query.Distinct();
                     }
 
-                    if (!_catalogSettings.IgnoreStoreLimitations)
+                    //Store mapping
+                    var storeId = _storeContext.CurrentStore.Id;
+
+                    if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Category>(storeId))
                     {
-                        //Store mapping
-                        var currentStoreId = _storeContext.CurrentStore.Id;
-                        query = from c in query
-                            join sm in _storeMappingRepository.Table
-                                on new {c1 = c.Id, c2 = nameof(Category)}
-                                equals new {c1 = sm.EntityId, c2 = sm.EntityName}
-                                into c_sm
-                            from sm in c_sm.DefaultIfEmpty()
-                            where !c.LimitedToStores || currentStoreId == sm.StoreId
-                            select c;
+                        query = query.Where(_storeMappingService.ApplyStoreMapping<Category>(storeId));
                     }
-
-                    query = query.Distinct();
                 }
 
                 return query.OrderBy(c => c.DisplayOrder).ThenBy(c => c.Id);
@@ -524,27 +506,13 @@ namespace Nop.Services.Catalog
                             select pc;
                 }
 
-                if (!_catalogSettings.IgnoreStoreLimitations)
+                //Store mapping
+                var storeId = _storeContext.CurrentStore.Id;
+
+                if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Category>(storeId))
                 {
-                    //Store mapping
-                    var currentStoreId = _storeContext.CurrentStore.Id;
-                    query = from pc in query
-                            join c in _categoryRepository.Table on pc.CategoryId equals c.Id
-                            join sm in _storeMappingRepository.Table
-                                on new
-                                {
-                                    c1 = c.Id,
-                                    c2 = nameof(Category)
-                                }
-                                equals new
-                                {
-                                    c1 = sm.EntityId,
-                                    c2 = sm.EntityName
-                                }
-                                into c_sm
-                            from sm in c_sm.DefaultIfEmpty()
-                            where !c.LimitedToStores || currentStoreId == sm.StoreId
-                            select pc;
+                    var storeMappedQuery = _categoryRepository.Table.Where(_storeMappingService.ApplyStoreMapping<Category>(storeId));
+                    query = query.Where(pc => storeMappedQuery.Any(sm => pc.CategoryId == sm.Id));
                 }
 
                 query = query.Distinct();

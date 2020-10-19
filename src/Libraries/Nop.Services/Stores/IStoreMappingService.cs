@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Nop.Core;
 using Nop.Core.Domain.Stores;
 
@@ -29,6 +31,9 @@ namespace Nop.Services.Stores
         /// <param name="entity">Entity</param>
         /// <returns>Store mapping records</returns>
         IList<StoreMapping> GetStoreMappings<T>(T entity) where T : BaseEntity, IStoreMappingSupported;
+
+        Expression<Func<TEntity, bool>> ApplyStoreMapping<TEntity>(int storeId) 
+            where TEntity : BaseEntity, IStoreMappingSupported;
 
         /// <summary>
         /// Inserts a store mapping record

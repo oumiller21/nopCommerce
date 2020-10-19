@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using LinqToDB;
 using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Core.Domain.Catalog;
@@ -83,6 +85,21 @@ namespace Nop.Services.Stores
             var storeMappings = _staticCacheManager.Get(key, query.ToList);
 
             return storeMappings;
+        }
+
+        /// <summary>
+        /// Apply a store mapping to a passed query
+        /// </summary>
+        /// <param name="query">Query to apply a store mapping</param>
+        /// <param name="storeId">Store identifier</param>
+        /// <typeparam name="TEntity">Entity type</typeparam>
+        /// <returns>Query with a store mapping</returns>
+        public virtual Expression<Func<TEntity, bool>> ApplyStoreMapping<TEntity>(int storeId)
+            where TEntity : BaseEntity, IStoreMappingSupported
+        {
+            return (me) => (from sm in _storeMappingRepository.Table
+                            where !me.LimitedToStores || sm.StoreId == storeId && sm.EntityId == me.Id && sm.EntityName == typeof(TEntity).Name
+                            select sm.EntityId).Any();
         }
 
         /// <summary>

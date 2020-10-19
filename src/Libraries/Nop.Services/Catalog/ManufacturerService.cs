@@ -7,9 +7,7 @@ using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Discounts;
 using Nop.Core.Domain.Security;
-using Nop.Core.Domain.Stores;
 using Nop.Data;
-using Nop.Data.DataProviders.SQL;
 using Nop.Services.Customers;
 using Nop.Services.Discounts;
 using Nop.Services.Security;
@@ -32,10 +30,9 @@ namespace Nop.Services.Catalog
         private readonly IRepository<Manufacturer> _manufacturerRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<ProductManufacturer> _productManufacturerRepository;
-        private readonly IRepository<StoreMapping> _storeMappingRepository;
         private readonly IStaticCacheManager _staticCacheManager;
         private readonly IStoreContext _storeContext;
-        protected readonly IStoreMappingService _storeMappingService;
+        private readonly IStoreMappingService _storeMappingService;
         private readonly IWorkContext _workContext;
 
         #endregion
@@ -50,7 +47,6 @@ namespace Nop.Services.Catalog
             IRepository<Manufacturer> manufacturerRepository,
             IRepository<Product> productRepository,
             IRepository<ProductManufacturer> productManufacturerRepository,
-            IRepository<StoreMapping> storeMappingRepository,
             IStaticCacheManager staticCacheManager,
             IStoreContext storeContext,
             IStoreMappingService storeMappingService,
@@ -64,7 +60,6 @@ namespace Nop.Services.Catalog
             _manufacturerRepository = manufacturerRepository;
             _productRepository = productRepository;
             _productManufacturerRepository = productManufacturerRepository;
-            _storeMappingRepository = storeMappingRepository;
             _staticCacheManager = staticCacheManager;
             _storeContext = storeContext;
             _storeMappingService = storeMappingService;
@@ -161,7 +156,9 @@ namespace Nop.Services.Catalog
 
                 //store mapping
                 if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Manufacturer>(storeId))
-                    query = query.Where(m => m.LimitedToStores(_storeMappingRepository.Table, storeId));
+                {
+                    query = query.Where(_storeMappingService.ApplyStoreMapping<Manufacturer>(storeId));
+                }
 
                 return query.Distinct();
             }, pageIndex, pageSize);
@@ -311,16 +308,14 @@ namespace Nop.Services.Catalog
                         where !m.SubjectToAcl || allowedCustomerRolesIds.Contains(acl.CustomerRoleId)
                         select pm;
                 }
-                
+
                 //store mapping
                 var storeId = _storeContext.CurrentStore.Id;
 
                 if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Manufacturer>(storeId))
                 {
-                    query = from pm in query
-                        join m in _manufacturerRepository.Table on pm.ManufacturerId equals m.Id
-                        where m.LimitedToStores(_storeMappingRepository.Table, storeId)
-                        select pm;
+                    var storeMappedQuery = _manufacturerRepository.Table.Where(_storeMappingService.ApplyStoreMapping<Manufacturer>(storeId));
+                    query = query.Where(pc => storeMappedQuery.Any(sm => pc.ManufacturerId == sm.Id));
                 }
 
                 query = query.Distinct();
@@ -384,10 +379,8 @@ namespace Nop.Services.Catalog
 
                 if (!_catalogSettings.IgnoreStoreLimitations && _storeMappingService.IsEntityMappingExists<Manufacturer>(storeId))
                 {
-                    query = from pm in query
-                        join m in _manufacturerRepository.Table on pm.ManufacturerId equals m.Id
-                        where m.LimitedToStores(_storeMappingRepository.Table, storeId)
-                        select pm;
+                    var storeMappedQuery = _manufacturerRepository.Table.Where(_storeMappingService.ApplyStoreMapping<Manufacturer>(storeId));
+                    query = query.Where(pc => storeMappedQuery.Any(sm => pc.ManufacturerId == sm.Id));
                 }
 
                 query = query.Distinct();
