@@ -242,10 +242,15 @@ $(document).ajaxStart(function () {
 $(document).ready(function () {
   $(".card.card-secondary >.card-header").click(WrapAndSaveBlockData);
 
-  $('.card.card-secondary').on('expanded.lte.cardwidget', function (e) {
-    setTimeout(function () {
-      ensureDataTablesRendered();
-    }, 400);
+  $('.card.card-secondary').on('expanded.lte.cardwidget', function () {
+    
+    if ($(this).find('table.dataTable').length > 0) {
+      $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+
+      setTimeout(function () {
+        ensureDataTablesRendered();
+      }, 400);
+    }
   });
 });
 

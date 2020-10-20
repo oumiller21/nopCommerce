@@ -2,14 +2,23 @@
 .content {
     padding-bottom: 55px;
 }
+.content-wrapper {
+  background-color: #ecf0f5;
+}
 ul, ol {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 600;
 }
 a {
   color: #3c8dbc;
 }
+.alert a {
+    color: black;
+}
 .margin-r-10 {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .margin-r-5 {
   margin-right: 5px;
@@ -202,7 +211,7 @@ ul.common-list {
 }
 
   .card.card-secondary > .card-header div {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
   }
 
@@ -273,7 +282,7 @@ ul.common-list {
     }
 
 .search-text {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /*DISCOUNT*/
@@ -853,6 +862,10 @@ div.dataTables_wrapper div.dataTables_processing .fa {
 
 .dataTables_wrapper tbody td {
     vertical-align: middle !important;
+}
+
+.custom-select-sm {
+  font-size: 100%;
 }
 
 /* NAV BAR */
