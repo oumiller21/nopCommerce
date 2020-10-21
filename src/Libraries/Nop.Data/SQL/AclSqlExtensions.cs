@@ -5,7 +5,7 @@ using LinqToDB;
 using Nop.Core;
 using Nop.Core.Domain.Security;
 
-namespace Nop.Data.DataProviders.SQL
+namespace Nop.Data.SQL
 {
     public static class AclSqlExtensions
     {

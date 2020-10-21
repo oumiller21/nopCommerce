@@ -43,6 +43,19 @@ namespace Nop.Services.Stores
         #region Methods
 
         /// <summary>
+        /// Get an expression predicate to apply a store mapping
+        /// </summary>
+        /// <param name="storeId">Store identifier</param>
+        /// <typeparam name="TEntity">Type of entity witch supported store mapping</typeparam>
+        /// <returns>Lambda expression</returns>
+        public virtual Expression<Func<TEntity, bool>> ApplyStoreMapping<TEntity>(int storeId) where TEntity : BaseEntity, IStoreMappingSupported
+        {
+            return (me) => (from sm in _storeMappingRepository.Table
+                            where !me.LimitedToStores || sm.StoreId == storeId && sm.EntityId == me.Id && sm.EntityName == typeof(TEntity).Name
+                            select sm.EntityId).Any();
+        }
+
+        /// <summary>
         /// Deletes a store mapping record
         /// </summary>
         /// <param name="storeMapping">Store mapping record</param>
@@ -85,21 +98,6 @@ namespace Nop.Services.Stores
             var storeMappings = _staticCacheManager.Get(key, query.ToList);
 
             return storeMappings;
-        }
-
-        /// <summary>
-        /// Apply a store mapping to a passed query
-        /// </summary>
-        /// <param name="query">Query to apply a store mapping</param>
-        /// <param name="storeId">Store identifier</param>
-        /// <typeparam name="TEntity">Entity type</typeparam>
-        /// <returns>Query with a store mapping</returns>
-        public virtual Expression<Func<TEntity, bool>> ApplyStoreMapping<TEntity>(int storeId)
-            where TEntity : BaseEntity, IStoreMappingSupported
-        {
-            return (me) => (from sm in _storeMappingRepository.Table
-                            where !me.LimitedToStores || sm.StoreId == storeId && sm.EntityId == me.Id && sm.EntityName == typeof(TEntity).Name
-                            select sm.EntityId).Any();
         }
 
         /// <summary>

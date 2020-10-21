@@ -7,7 +7,7 @@ using Nop.Core.Caching;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Security;
 using Nop.Data;
-using Nop.Data.DataProviders.SQL;
+using Nop.Data.SQL;
 using Nop.Services.Customers;
 using Nop.Services.Seo;
 using Nop.Services.Stores;

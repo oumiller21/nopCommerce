@@ -12,6 +12,14 @@ namespace Nop.Services.Stores
     public partial interface IStoreMappingService
     {
         /// <summary>
+        /// Get an expression predicate to apply a store mapping
+        /// </summary>
+        /// <param name="storeId">Store identifier</param>
+        /// <typeparam name="TEntity">Type of entity witch supported store mapping</typeparam>
+        /// <returns>Lambda expression</returns>
+        Expression<Func<TEntity, bool>> ApplyStoreMapping<TEntity>(int storeId) where TEntity : BaseEntity, IStoreMappingSupported;
+
+        /// <summary>
         /// Deletes a store mapping record
         /// </summary>
         /// <param name="storeMapping">Store mapping record</param>
@@ -31,9 +39,6 @@ namespace Nop.Services.Stores
         /// <param name="entity">Entity</param>
         /// <returns>Store mapping records</returns>
         IList<StoreMapping> GetStoreMappings<T>(T entity) where T : BaseEntity, IStoreMappingSupported;
-
-        Expression<Func<TEntity, bool>> ApplyStoreMapping<TEntity>(int storeId) 
-            where TEntity : BaseEntity, IStoreMappingSupported;
 
         /// <summary>
         /// Inserts a store mapping record

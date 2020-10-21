@@ -14,7 +14,7 @@ using Nop.Core.Domain.Security;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Infrastructure;
 using Nop.Data;
-using Nop.Data.DataProviders.SQL;
+using Nop.Data.SQL;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Messages;
