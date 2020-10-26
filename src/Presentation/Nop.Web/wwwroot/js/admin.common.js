@@ -240,30 +240,33 @@ $(document).ajaxStart(function () {
 
 //no-tabs solution
 $(document).ready(function () {
-  $(".card.card-secondary >.card-header").click(WrapAndSaveBlockData);
+  $(".card.card-secondary >.card-header").click(CardToggle);
 
+  //expanded
   $('.card.card-secondary').on('expanded.lte.cardwidget', function () {
+    WrapAndSaveBlockData($(this), false)
     
     if ($(this).find('table.dataTable').length > 0) {
-      $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
-
       setTimeout(function () {
         ensureDataTablesRendered();
-      }, 400);
+      }, 420);
     }
+  });
+
+  //collapsed
+  $('.card.card-secondary').on('collapsed.lte.cardwidget', function () {
+    WrapAndSaveBlockData($(this), true)
   });
 });
 
-function WrapAndSaveBlockData() {
+function CardToggle() {
   var card = $(this).parent(".card.card-secondary");
-  card.CardWidget('toggle');
+  card.CardWidget('toggle'); 
+}
+
+function WrapAndSaveBlockData(card, collapsed) {
   var hideAttribute = card.attr("data-hideAttribute");
-  if (card.hasClass("collapsed-card")) {
-    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, false);
-  }
-  else {
-    saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, true);
-  }
+  saveUserPreferences(rootAppPath + 'admin/preferences/savepreference', hideAttribute, collapsed);
 }
 
 //collapse search block
@@ -325,8 +328,8 @@ $(document).ready(function () {
 //Recalculate the column widths
 $(document).ready(function () {
   // when menu item click
-  $('.treeview').on('click', function (e) {
-    var itemCount = $(e.currentTarget).find('ul').children('li:not([class])').length;
+  $('.nav-item').on('click', function (e) {
+    var itemCount = $(e.currentTarget).find('ul').children('li:not([nav-item])').length;
        
     reloadAllDataTables(itemCount);
   });

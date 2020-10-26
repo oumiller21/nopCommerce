@@ -194,12 +194,16 @@ ul.common-list {
 
 .card.card-secondary {
   margin-bottom: 10px;
-  border-top: 3px solid #d2d6de;
+  border-top: 3px solid #00c0ef;
   border-left: none;
   border-right: none;
   border-bottom: none;
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
+
+  .card.card-secondary.collapsed-card {
+    border-top: 3px solid #d2d6de;
+  }
 
     .card.card-secondary textarea {
         resize: vertical;
