@@ -1,6 +1,9 @@
 ﻿/* COMMON */
 .content {
-    padding-bottom: 55px;
+    padding: 0 10px 55px 10px;
+}
+.content-header{
+    padding: 15px 1rem;
 }
 .content-wrapper {
   background-color: #ecf0f5;
@@ -16,6 +19,9 @@ a {
 }
 .alert a {
     color: black;
+}
+ul.nav-tabs li.nav-item a.nav-link {
+  color: #444;
 }
 .margin-r-10 {
   margin-right: 10px;
@@ -786,6 +792,9 @@ input[type="text"].k-input {
 }
 
 /* SIDE BAR */
+.nav-sidebar {
+    padding-bottom: 40px;
+}
 .brand-link .brand-image-xl {
   max-height: 45px;
 }
@@ -1245,6 +1254,7 @@ span.grid-report-item.red {
 .theme-selection-block .checkbox label {
     padding-left: 0;
     padding-right: 20px;
+    padding-top: 8px;
 }
 .theme-selection-block .checkbox label img {
     width: 175px;

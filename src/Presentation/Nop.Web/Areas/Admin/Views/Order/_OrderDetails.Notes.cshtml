@@ -87,9 +87,9 @@
                     <nop-label asp-for="AddOrderNoteDownloadId" />
                 </div>
                 <div class="col-md-9">
-                    <div class="checkbox">
-                        <label>
-                            <nop-editor asp-for="AddOrderNoteHasDownload" />
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" asp-for="AddOrderNoteHasDownload" />
                             @T("Admin.Orders.OrderNotes.Fields.Download.HasDownload")
                         </label>
                     </div>

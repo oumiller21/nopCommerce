@@ -294,10 +294,8 @@
         }
         <div class="content-wrapper">
             @await Html.PartialAsync("Notifications")
-            <div class="tewwwwwxt-sm">
                 <nop-antiforgery-token />
                 @RenderBody()
-            </div>
         </div>
         <div class="main-footer clearfix">
             @if (!storeInformationSettings.HidePoweredByNopCommerce)
@@ -345,7 +343,7 @@
                 $('#backTop').backTop();
 
                 //enable tooltips
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip({placement: 'bottom'});
             });
         </script>
     </body>

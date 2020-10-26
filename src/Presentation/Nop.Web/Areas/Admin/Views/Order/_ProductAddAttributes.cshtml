@@ -21,7 +21,7 @@
         <div class="card-body">
             @foreach (var attribute in Model)
             {
-                <div id="@(NopCatalogDefaults.ProductAttributePrefix)row_@(attribute.Id)" class="form-group">
+                <div id="@(NopCatalogDefaults.ProductAttributePrefix)row_@(attribute.Id)" class="form-group row">
                     @{
                         var controlId = $"{NopCatalogDefaults.ProductAttributePrefix}{attribute.Id}";
                         var textPrompt = !string.IsNullOrEmpty(attribute.TextPrompt) ? attribute.TextPrompt : attribute.Name;
@@ -71,9 +71,9 @@
                                     {
                                         foreach (var attributeValue in attribute.Values)
                                         {
-                                            <div class="radio">
-                                                <label for="@(controlId)_@(attributeValue.Id)">
-                                                    <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="@(controlId)_@(attributeValue.Id)">
+                                                    <input class="form-check-input" id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
                                                            @(attribute.Values.Any(value => value.CustomerEntersQty) ? Html.Raw($"onclick=\"showHideRadioQuantity('{controlId}')\"") : null) />
                                                     @getAttributeValueName(attributeValue)
                                                 </label>
@@ -99,9 +99,9 @@
                                     {
                                         foreach (var attributeValue in attribute.Values)
                                         {
-                                            <div class="checkbox">
-                                                <label for="@(controlId)_@(attributeValue.Id)">
-                                                    <input id="@(controlId)_@(attributeValue.Id)" type="checkbox" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" @(attribute.AttributeControlType == AttributeControlType.ReadonlyCheckboxes ? Html.Raw(" disabled=\"disabled\"") : null)
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="@(controlId)_@(attributeValue.Id)">
+                                                    <input class="form-check-input" id="@(controlId)_@(attributeValue.Id)" type="checkbox" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" @(attribute.AttributeControlType == AttributeControlType.ReadonlyCheckboxes ? Html.Raw(" disabled=\"disabled\"") : null)
                                                            @(attributeValue.CustomerEntersQty ? Html.Raw($"onchange=\"showHideCheckboxQuantity('{controlId}_{attributeValue.Id}')\"") : null) />
                                                     @getAttributeValueName(attributeValue)
                                                 </label>

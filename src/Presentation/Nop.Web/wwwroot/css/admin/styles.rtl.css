@@ -17,6 +17,9 @@ a {
 .alert a {
   color: black;
 }
+ul.nav-tabs li.nav-item a.nav-link {
+  color: #444;
+}
 .margin-r-10 {
     margin-left: 10px;
 }
@@ -794,6 +797,9 @@ input[type="text"].k-input {
 }
 
 /* SIDE BAR */
+.nav-sidebar {
+  padding-bottom: 40px;
+}
 .brand-link .brand-image-xl {
   max-height: 45px;
 }
@@ -1304,10 +1310,11 @@ span.grid-report-item {
 .theme-selection-block .checkbox {
     float: right;
 }
-    .theme-selection-block .checkbox label {
-        padding-right: 0;
-        padding-left: 20px;
-    }
+  .theme-selection-block .checkbox label {
+    padding-right: 0;
+    padding-left: 20px;
+    padding-top: 8px;
+  }
         .theme-selection-block .checkbox label img {
             width: 175px;
         }

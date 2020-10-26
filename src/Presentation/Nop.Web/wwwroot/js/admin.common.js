@@ -255,7 +255,7 @@ $(document).ready(function () {
 });
 
 function WrapAndSaveBlockData() {
-  var card = $(this).parent(".card.card-secondary")
+  var card = $(this).parent(".card.card-secondary");
   card.CardWidget('toggle');
   var hideAttribute = card.attr("data-hideAttribute");
   if (card.hasClass("collapsed-card")) {

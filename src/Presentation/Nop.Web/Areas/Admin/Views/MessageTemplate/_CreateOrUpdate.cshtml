@@ -234,9 +234,9 @@
                                     //we store a value into "ViewData" and then use it in the Download.cshtml file
                                     ViewData["nop.DownloadEditor.DisableUrl"] = true;
                                 }
-                                <div class="checkbox">
-                                    <label>
-                                        <nop-editor asp-for="HasAttachedDownload" />
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" asp-for="HasAttachedDownload" />
                                         @T("Admin.ContentManagement.MessageTemplates.Fields.AttachedDownload.Exists")
                                     </label>
                                 </div>

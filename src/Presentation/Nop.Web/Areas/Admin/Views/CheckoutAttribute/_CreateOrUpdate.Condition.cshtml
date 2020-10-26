@@ -72,9 +72,9 @@
                                     case AttributeControlType.ImageSquares:
                                         foreach (var value in Model.ConditionModel.ConditionAttributes[i].Values)
                                         {
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" asp-for="@Model.ConditionModel.ConditionAttributes[i].SelectedValueId" value="@value.Value" checked="@value.Selected" />
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" asp-for="@Model.ConditionModel.ConditionAttributes[i].SelectedValueId" value="@value.Value" checked="@value.Selected" >
                                                     @value.Text
                                                 </label>
                                             </div>
@@ -83,10 +83,11 @@
                                     case AttributeControlType.Checkboxes:
                                         for (var j = 0; j < Model.ConditionModel.ConditionAttributes[i].Values.Count; j++)
                                         {
-                                            <div class="checkbox">
-                                                <label>
+                                            
+                                            <div class="form-check">
+                                                <label class="form-check-label">
                                                     <input type="hidden" asp-for="@Model.ConditionModel.ConditionAttributes[i].Values[j].Value" />
-                                                    <input type="checkbox" asp-for="@Model.ConditionModel.ConditionAttributes[i].Values[j].Selected"/>
+                                                    <input class="form-check-input" type="checkbox" asp-for="@Model.ConditionModel.ConditionAttributes[i].Values[j].Selected" />
                                                     @Model.ConditionModel.ConditionAttributes[i].Values[j].Text
                                                 </label>
                                             </div>
