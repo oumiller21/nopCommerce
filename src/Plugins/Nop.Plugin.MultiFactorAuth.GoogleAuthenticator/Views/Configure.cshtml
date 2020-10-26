@@ -3,6 +3,7 @@
 
 @{
     Layout = "_ConfigurePlugin";
+    var hideSearchBlock = Model.GoogleAuthenticatorSearchModel.HideSearchBlock;
 }
 
 <form asp-controller="GoogleAuthenticator" asp-action="Configure" method="post">    
@@ -31,20 +32,17 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-9 offset-md-3">
-                            <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
+                            <input type="submit" name="save" class="btn btn-primary" value="@T("Admin.Common.Save")" />
                         </div>
                     </div>
                 </div>
             </div>
-    </selection>
-    <section class="content">    
-        <div class="container-fluid">
             <div class="card card-default card-search">
                 <div class="card-body">
                     <div class="row search-row @(!Model.GoogleAuthenticatorSearchModel.HideSearchBlock ? "opened" : "")" data-hideAttribute="@GoogleAuthenticatorDefaults.HideSearchBlockAttribute">
                         <div class="search-text">@T("Admin.Common.Search")</div>
                         <div class="icon-search"><i class="fa fa-search" aria-hidden="true"></i></div>
-                        <div class="icon-collapse"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+                        <div class="icon-collapse"><i class="fa fa-angle-@(!hideSearchBlock ? "up" : "down")" aria-hidden="true"></i></div>
                     </div>
                     <div class="search-body @(Model.GoogleAuthenticatorSearchModel.HideSearchBlock ? "closed" : "")">
                         <div class="row">
@@ -101,6 +99,5 @@
                     })
                 </div>
             </div>
-        </div>
-    </section>
+    </selection>
 </form>

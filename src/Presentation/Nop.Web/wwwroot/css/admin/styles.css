@@ -1416,6 +1416,7 @@ span.grid-report-item.red {
     cursor: pointer;
     border: 1px solid #367fa9;
     border-radius: 3px;
+    
 }
 .onoffswitch-inner {
     display: block;
@@ -1423,23 +1424,25 @@ span.grid-report-item.red {
     margin-left: -100%;
     transition: margin 0.3s ease-in 0s;
 }
-.onoffswitch-inner:before, .onoffswitch-inner:after {
+  .onoffswitch-inner:before, .onoffswitch-inner:after {
     display: block;
     float: left;
     width: 50%;
     height: 32px;
     padding: 0;
+    padding-top: 3px;
     line-height: 32px;
     font-size: 14px;
     color: white;
     font-family: Trebuchet, Arial, sans-serif;
     font-weight: bold;
-}
+  }
 .onoffswitch-inner:before {
     content: attr(data-locale-advanced);
     padding-left: 10px;
     background-color: #3c8dbc;
     color: #FFFFFF;
+    height: 36px;
 }
 .onoffswitch-inner:after {
     content: attr(data-locale-basic);

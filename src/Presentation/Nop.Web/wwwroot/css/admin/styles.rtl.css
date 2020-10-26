@@ -1485,24 +1485,26 @@ span.grid-report-item {
     margin-right: -100%;
     transition: margin 0.3s ease-in 0s;
 }
-    .onoffswitch-inner:before, .onoffswitch-inner:after {
-        display: block;
-        float: right;
-        width: 50%;
-        height: 32px;
-        padding: 0;
-        line-height: 32px;
-        font-size: 14px;
-        color: white;
-        font-family: Trebuchet, Arial, sans-serif;
-        font-weight: bold;
-    }
-    .onoffswitch-inner:before {
-        content: attr(data-locale-advanced);
-        padding-right: 10px;
-        background-color: #3c8dbc;
-        color: #FFFFFF;
-    }
+  .onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block;
+    float: right;
+    width: 50%;
+    height: 32px;
+    padding: 0;
+    padding-top: 3px;
+    line-height: 32px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+  }
+  .onoffswitch-inner:before {
+    content: attr(data-locale-advanced);
+    padding-right: 10px;
+    background-color: #3c8dbc;
+    color: #FFFFFF;
+    height: 36px;
+  }
     .onoffswitch-inner:after {
         content: attr(data-locale-basic);
         padding-left: 10px;
