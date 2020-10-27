@@ -143,16 +143,16 @@ namespace Nop.Web.Framework.Extensions
         }
 
         /// <summary>
-        /// Gets a selected panel name (used in admin area to store selected panel name)
+        /// Gets a selected card name (used in admin area to store selected panel name)
         /// </summary>
         /// <param name="helper">HtmlHelper</param>
         /// <returns>Name</returns>
-        public static string GetSelectedPanelName(this IHtmlHelper helper)
+        public static string GetSelectedCardName(this IHtmlHelper helper)
         {
             //keep this method synchronized with
-            //"SaveSelectedPanelName" method of \Area\Admin\Controllers\BaseAdminController.cs
+            //"SaveSelectedCardName" method of \Area\Admin\Controllers\BaseAdminController.cs
             var tabName = string.Empty;
-            const string dataKey = "nop.selected-panel-name";
+            const string dataKey = "nop.selected-card-name";
 
             if (helper.ViewData.ContainsKey(dataKey))
                 tabName = helper.ViewData[dataKey].ToString();

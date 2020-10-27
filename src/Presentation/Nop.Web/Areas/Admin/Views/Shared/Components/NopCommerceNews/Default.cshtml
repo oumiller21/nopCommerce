@@ -5,12 +5,12 @@
 @inject Nop.Services.Common.IGenericAttributeService genericAttributeService
 
 @{
-    const string panelId = "nopcommerce-news-box";
-    const string hidePanelAttributeName = "HideNopCommerceNewsPanel";
-    var hidePanel = genericAttributeService.GetAttribute<bool>(workContext.CurrentCustomer, hidePanelAttributeName);
+    const string cardId = "nopcommerce-news-box";
+    const string hideCardAttributeName = "HideNopCommerceNewsCard";
+    var hideCard = genericAttributeService.GetAttribute<bool>(workContext.CurrentCustomer, hideCardAttributeName);
 }
 
-    <div class="card card-primary card-outline @if(hidePanel){<text>collapsed-card</text>}" id="@panelId">
+    <div class="card card-primary card-outline @if(hideCard){<text>collapsed-card</text>}" id="@cardId">
         <div class="card-header with-border clearfix">
             <div class="card-title">
                 <i class="fa fa-newspaper-o"></i>
@@ -22,7 +22,7 @@
             </div>
             <div class="card-tools pull-right">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    @if (hidePanel)
+                    @if (hideCard)
                     {
                         <text><i class="fa fa-plus"></i></text>
                     }
@@ -60,9 +60,9 @@
 
             <script>
             $(document).ready(function () {
-                $('#@panelId').on('click', 'button[data-widget="collapse"]', function () {
-                    var collapsed = !$('#@panelId').hasClass('collapsed-box');
-                    saveUserPreferences('@(Url.Action("SavePreference", "Preferences"))', '@hidePanelAttributeName', collapsed);
+                $('#@cardId').on('click', 'button[data-widget="collapse"]', function () {
+                    var collapsed = !$('#@cardId').hasClass('collapsed-box');
+                    saveUserPreferences('@(Url.Action("SavePreference", "Preferences"))', '@hideCardAttributeName', collapsed);
                 });
             });
             </script>

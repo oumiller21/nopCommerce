@@ -318,12 +318,12 @@
             };
         </script>
         @{
-            //scroll to a selected panel (if specified)
-            var selectedPanelName = this.Html.GetSelectedPanelName();
-            if (!String.IsNullOrEmpty(selectedPanelName))
+            //scroll to a selected card (if specified)
+            var selectedCardName = this.Html.GetSelectedCardName();
+            if (!String.IsNullOrEmpty(selectedCardName))
             {
                 <script>
-                    location.hash = '#@(selectedPanelName)';
+                    location.hash = '#@(selectedCardName)';
                 </script>
             }
         }
